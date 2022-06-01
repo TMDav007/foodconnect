@@ -11,7 +11,7 @@ export const SectionBreaker = ({ name }) => {
       <div className="w-3/5 flex justify-end">
         <Image src={sectionBreaker} alt="sectionBreaker" className="" />
       </div>
-      <p className="font-inter text-2xl text-center text-brownBlack">{name}</p>
+      <p className="font-Inter text-2xl text-center text-brownBlack">{name}</p>
     </>
   );
 };

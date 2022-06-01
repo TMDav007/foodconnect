@@ -16,7 +16,7 @@ function Hero() {
             and connect with your favourite{" "}
             <span className="text-brightRed">food vendors </span>
           </h1>
-          <p className="max-w-sm text-center font-inter text-brownBlack text-xl leading-8 tracking-wide md:max-w-lg md:text-left">
+          <p className="max-w-sm text-center font-Inter text-brownBlack text-xl font-medium leading-8 tracking-wide md:max-w-lg md:text-left">
             FoodConnect is your sure plug to get varieties of recipes, and
             employ services of food vendors of your choice.
           </p>
