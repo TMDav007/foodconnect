@@ -103,9 +103,12 @@ class LoginAPIView(generics.GenericAPIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
+        responses = {
+                'message': 'Login was successful',
+                'data':serializer.data,
+            }
 
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(responses, status=status.HTTP_200_OK)
 
 class StaffRegisterAPIView(generics.GenericAPIView):
     authentication_classes = []
