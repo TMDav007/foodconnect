@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Signup from "../components/Signup";
 import BImage from "./../public/assets/signup.png";
+import Layout from "../hoc/Layout";
 
 function signup() {
   return (
@@ -16,7 +17,10 @@ function signup() {
           className=""
         />
         <div className="absolute inset-0 z-50 ">
-          <Header />
+          <Layout
+            title="FoodConnect | Signup"
+            content="Sign up page for FoodConnect"
+          />
           <Signup />
         </div>
       </div>

@@ -6,6 +6,7 @@ import PopularRecipe from "../components/Home/PopularRecipe";
 import Testimonial from "../components/Home/Testimonial";
 import Subscribe from "../components/Home/Subscribe";
 import Footer from "../components/Footer";
+import Layout from "../hoc/Layout";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-lightOrange">
-        <Header />
+        <Layout />
         <Hero />
         <PopularRecipe />
         <FoodVendor />

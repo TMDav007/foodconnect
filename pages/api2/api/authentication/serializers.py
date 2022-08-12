@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import User
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
+from django.http import JsonResponse
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
@@ -43,10 +45,11 @@ class LoginSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6,write_only = True)
     username = serializers.CharField(max_length=255, min_length=3, read_only=True)
     tokens = serializers.CharField(max_length=68, min_length=6, read_only = True)
+    is_staff = serializers.CharField(max_length=10, min_length=4, read_only = True)
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'username', 'tokens')
+        fields = ('email', 'password','username', 'tokens', 'is_staff')
 
     def validate(self, attrs):
         email = attrs.get('email', '')
@@ -55,7 +58,8 @@ class LoginSerializer(serializers.ModelSerializer):
 
 
         if not user:
-            raise AuthenticationFailed("Invalid credentials, try again.")
+            raise AuthenticationFailed({'error': 'Invalid credentials, try again.'})
+
         if not user.is_active:
             raise AuthenticationFailed("Account disabled, contact admin")
         # if not user.is_verified:
@@ -65,6 +69,7 @@ class LoginSerializer(serializers.ModelSerializer):
         return {
             'email': user.email,
             'username': user.username,
+            'is_staff':user.is_staff,
             'tokens': user.tokens
         }
 
